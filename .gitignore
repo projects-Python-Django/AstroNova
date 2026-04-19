@@ -1,7 +1,6 @@
-.env
+# variables de entorno
+*.env
+*.venv
+# archivos de entorno virtual
 venv/
-.idea
-__pycache__/
-db.sqlite3
-.vscode
-*.pyc
+env/
