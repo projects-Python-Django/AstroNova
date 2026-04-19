@@ -1,0 +1,38 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}{% if object %}Editar{% else %}Crear{% endif %} Registro de Exploración - AstroNova{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>{% if object %}Editar{% else %}Crear{% endif %} Registro de Exploración</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.planeta_destino.id_for_label }}" class="form-label">Planeta Destino</label>
+                        {{ form.planeta_destino }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.descripcion.id_for_label }}" class="form-label">Descripción</label>
+                        {{ form.descripcion }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.nivel_riesgo.id_for_label }}" class="form-label">Nivel de Riesgo</label>
+                        {{ form.nivel_riesgo }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.mision.id_for_label }}" class="form-label">Misión</label>
+                        {{ form.mision }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{% url 'registroexploracion_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

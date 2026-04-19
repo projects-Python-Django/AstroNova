@@ -1,0 +1,24 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Detalle Registro de Exploración - AstroNova{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>Detalle del Registro de Exploración</h2>
+            </div>
+            <div class="card-body">
+                <h3>Exploración a {{ object.planeta_destino }}</h3>
+                <p><strong>Descripción:</strong> {{ object.descripcion }}</p>
+                <p><strong>Nivel de Riesgo:</strong> {{ object.get_nivel_riesgo_display }}</p>
+                <p><strong>Misión:</strong> {{ object.mision }}</p>
+                <a href="{% url 'registroexploracion_update' object.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'registroexploracion_delete' object.pk %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'registroexploracion_list' %}" class="btn btn-secondary">⬅️ Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Registros de Exploración - AstroNova{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-warning">Registros de Exploración</h2>
+        <p class="text-muted">Documenta cada salida de misión con su nivel de riesgo y planeta destino.</p>
+    </div>
+    <a href="{% url 'registroexploracion_create' %}" class="btn btn-primary btn-lg">Agregar registro</a>
+</div>
+<div class="row g-4">
+    {% for registro in registros %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card glass-card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-warning">{{ registro.planeta_destino }}</h5>
+                <p class="card-text">Riesgo: <strong>{{ registro.get_nivel_riesgo_display }}</strong></p>
+                <p class="card-text">Misión: <strong>{{ registro.mision }}</strong></p>
+                <p class="card-text">{{ registro.descripcion|truncatechars:100 }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between flex-wrap gap-2">
+                <a href="{% url 'registroexploracion_detail' registro.pk %}" class="btn btn-sm btn-outline-primary">Ver</a>
+                <a href="{% url 'registroexploracion_update' registro.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                <a href="{% url 'registroexploracion_delete' registro.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-secondary text-center">No hay registros de exploración.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Detalle Misión - AstroNova{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>Detalle de la Misión</h2>
+            </div>
+            <div class="card-body">
+                <h3>{{ object.nombre_mision }}</h3>
+                <p><strong>Fecha de Lanzamiento:</strong> {{ object.fecha_lanzamiento }}</p>
+                <p><strong>Estado:</strong> {{ object.get_estado_display }}</p>
+                <p><strong>Astronauta:</strong> {{ object.astronauta }}</p>
+                <p><strong>Nave:</strong> {{ object.nave }}</p>
+                <a href="{% url 'mision_update' object.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'mision_delete' object.pk %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'mision_list' %}" class="btn btn-secondary">⬅️ Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

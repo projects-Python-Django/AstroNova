@@ -1,0 +1,37 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Misiones - AstroNova{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-warning">Misiones</h2>
+        <p class="text-muted">Controla el estado de cada operación espacial.</p>
+    </div>
+    <a href="{% url 'mision_create' %}" class="btn btn-primary btn-lg">Agregar misión</a>
+</div>
+<div class="row g-4">
+    {% for mision in misiones %}
+    <div class="col-md-6">
+        <div class="card glass-card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-warning">{{ mision.nombre_mision }}</h5>
+                <p class="card-text">Lanzamiento: <strong>{{ mision.fecha_lanzamiento }}</strong></p>
+                <p class="card-text">Estado: <strong>{{ mision.get_estado_display }}</strong></p>
+                <p class="card-text">Astronauta: <strong>{{ mision.astronauta }}</strong></p>
+                <p class="card-text">Nave: <strong>{{ mision.nave }}</strong></p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between flex-wrap gap-2">
+                <a href="{% url 'mision_detail' mision.pk %}" class="btn btn-sm btn-outline-primary">Ver</a>
+                <a href="{% url 'mision_update' mision.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                <a href="{% url 'mision_delete' mision.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-secondary text-center">No hay misiones registradas.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

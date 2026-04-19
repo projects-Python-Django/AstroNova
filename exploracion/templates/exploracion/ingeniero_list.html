@@ -1,0 +1,35 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Ingenieros - AstroNova{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-warning">Ingenieros</h2>
+        <p class="text-muted">Registra al personal técnico a cargo del soporte en cada misión.</p>
+    </div>
+    <a href="{% url 'ingeniero_create' %}" class="btn btn-primary btn-lg">Agregar ingeniero</a>
+</div>
+<div class="row g-4">
+    {% for ingeniero in ingenieros %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card glass-card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-warning">{{ ingeniero.nombre }} {{ ingeniero.apellido }}</h5>
+                <p class="card-text">Especialidad: <strong>{{ ingeniero.especialidad }}</strong></p>
+                <p class="card-text">Años de experiencia: <strong>{{ ingeniero.años_experiencia }}</strong></p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between flex-wrap gap-2">
+                <a href="{% url 'ingeniero_detail' ingeniero.pk %}" class="btn btn-sm btn-outline-primary">Ver</a>
+                <a href="{% url 'ingeniero_update' ingeniero.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                <a href="{% url 'ingeniero_delete' ingeniero.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-secondary text-center">No hay ingenieros registrados.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Detalle Astronauta - AstroNova{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>Detalle del Astronauta</h2>
+            </div>
+            <div class="card-body">
+                <h3>{{ object.nombre }} {{ object.apellido }}</h3>
+                <p><strong>Rango:</strong> {{ object.get_rango_display }}</p>
+                <p><strong>Horas de Experiencia:</strong> {{ object.horas_experiencia }}</p>
+                <a href="{% url 'astronauta_update' object.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'astronauta_delete' object.pk %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'astronauta_list' %}" class="btn btn-secondary">⬅️ Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

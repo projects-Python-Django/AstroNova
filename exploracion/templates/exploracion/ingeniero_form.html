@@ -1,0 +1,38 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}{% if object %}Editar{% else %}Crear{% endif %} Ingeniero - AstroNova{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>{% if object %}Editar{% else %}Crear{% endif %} Ingeniero</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.apellido.id_for_label }}" class="form-label">Apellido</label>
+                        {{ form.apellido }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.especialidad.id_for_label }}" class="form-label">Especialidad</label>
+                        {{ form.especialidad }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.años_experiencia.id_for_label }}" class="form-label">Años de Experiencia</label>
+                        {{ form.años_experiencia }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{% url 'ingeniero_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

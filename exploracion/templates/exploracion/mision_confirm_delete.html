@@ -1,0 +1,23 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Eliminar Misión - AstroNova{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>Eliminar Misión</h2>
+            </div>
+            <div class="card-body">
+                <p>¿Estás seguro de que quieres eliminar la misión <strong>{{ object }}</strong>?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirmar eliminación</button>
+                    <a href="{% url 'mision_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

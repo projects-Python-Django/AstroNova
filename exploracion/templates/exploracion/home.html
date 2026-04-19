@@ -1,0 +1,65 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Inicio - AstroNova Mission Control{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card glass-card">
+            <div class="card-header">
+                <h1>Bienvenido a AstroNova Mission Control</h1>
+            </div>
+            <div class="card-body">
+                <p class="lead">Gestión de misiones, naves y exploraciones en un panel intuitivo y profesional.</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card glass-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Astronautas</h5>
+                                <p class="card-text">{{ astronautas_count }}</p>
+                                <a href="{% url 'astronauta_list' %}" class="btn btn-primary">Ver lista</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card glass-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Ingenieros</h5>
+                                <p class="card-text">{{ ingenieros_count }}</p>
+                                <a href="{% url 'ingeniero_list' %}" class="btn btn-primary">Ver lista</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card glass-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Naves</h5>
+                                <p class="card-text">{{ naves_count }}</p>
+                                <a href="{% url 'nave_list' %}" class="btn btn-primary">Ver lista</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card glass-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Misiones</h5>
+                                <p class="card-text">{{ misiones_count }}</p>
+                                <a href="{% url 'mision_list' %}" class="btn btn-primary">Ver lista</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card glass-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Registros</h5>
+                                <p class="card-text">{{ registros_count }}</p>
+                                <a href="{% url 'registroexploracion_list' %}" class="btn btn-primary">Ver lista</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

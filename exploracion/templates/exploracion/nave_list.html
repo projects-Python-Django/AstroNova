@@ -1,0 +1,36 @@
+{% extends 'exploracion/base.html' %}
+
+{% block title %}Naves - AstroNova{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-warning">Naves</h2>
+        <p class="text-muted">Visualiza las naves disponibles para las próximas expediciones.</p>
+    </div>
+    <a href="{% url 'nave_create' %}" class="btn btn-primary btn-lg">Agregar nave</a>
+</div>
+<div class="row g-4">
+    {% for nave in naves %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card glass-card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-warning">{{ nave.nombre }}</h5>
+                <p class="card-text">Modelo: <strong>{{ nave.modelo }}</strong></p>
+                <p class="card-text">Capacidad: <strong>{{ nave.capacidad_tripulación }}</strong></p>
+                <p class="card-text">Estado: <strong>{{ nave.get_estado_display }}</strong></p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between flex-wrap gap-2">
+                <a href="{% url 'nave_detail' nave.pk %}" class="btn btn-sm btn-outline-primary">Ver</a>
+                <a href="{% url 'nave_update' nave.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                <a href="{% url 'nave_delete' nave.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-secondary text-center">No hay naves registradas.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
